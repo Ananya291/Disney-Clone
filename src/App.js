@@ -5,6 +5,7 @@ import Header from './Components/Header';
 import Home from './Components/Home';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Detail from './Components/Detail';
+import Login from './Components/Login';
 
 function App() {
   return (
@@ -12,10 +13,9 @@ function App() {
       <Router>
         <Header />
         <Routes>
-        <Route exact path='/detail' element={<Detail />}> 
-          </Route>
-          <Route exact path='/' element={<Home/>}>
-          </Route>
+          <Route exact path='/login' element={<Login />}></Route>
+          <Route exact path='/detail' element={<Detail />}> </Route>
+          <Route exact path='/' element={<Home />}></Route>
         </Routes>
       </Router>
     </div>
