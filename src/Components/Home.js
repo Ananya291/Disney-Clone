@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import ImgSlider from './ImgSlider'
 import Viewers from './Viewers'
 import Movies from './Movies'
+// import db from '../firebase'
 
 function Home() {
+
+  // const api = "ef3e46bb86555a263c3ae0b1d65c6c96"; 
+
+  // useEffect(() =>{
+  //   // db.collection("movies").onSnapshot((snapshot)=>{
+  //   //   console.log(snapshot);
+  //   // })
+  //   fetch(`https://api.themoviedb.org/3/movie/1?api_key=${api}&language=en-US`)
+  //   .then(data=>{console.log("data")})
+  // }, [])
+
+
+
   return (
     <Container>
       <ImgSlider />

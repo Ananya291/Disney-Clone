@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 function Detail() {
+
     return (
-        <Container>
+        <Container>            
             <Background>
                 <img src='https://4.bp.blogspot.com/-KuWXfA_2zEw/WsPYrBXXXOI/AAAAAAAAVyw/1cMGP21yZcU5Y9uEKNGHuu5LabzGdKGfwCLcBGAs/w600-h315-p-k-no-nu/Bao-Lead-Image.jpg' />
             </Background>

@@ -1,23 +1,33 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
+import requests from '../Requests'
 
 function Movies() {
+  const [movie, setMovie] = useState([]);
+
+    async function fetchData() {
+        await fetch('https://api.themoviedb.org/3'+ requests.fetchNetflixOriginals)
+        .then(data => data.json())
+        .then(result => setMovie(result.results))
+        .catch(error => console.log(error))
+    }
+       
+    useEffect(() => { 
+        fetchData();
+    }, []);
+
   return (
     <Container>
         <h4>Recommended for You</h4>
         <Content>
-          <Wrap>
-            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3CMANXeq03jKGp-AgIhQDmr2UaE6-_zGqgg&usqp=CAU'/>
+          {movie.map((val,key)=>(
+            <Wrap>
+            <img style={{backgroundImage: `url("https://image.tmdb.org/t/p/original/${val.backdrop_path}")`,
+              backgroundSize: "cover",
+              backgroundPosition: "center center",
+            }} />
           </Wrap>
-          <Wrap>
-            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3CMANXeq03jKGp-AgIhQDmr2UaE6-_zGqgg&usqp=CAU'/>
-          </Wrap>
-          <Wrap>
-            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3CMANXeq03jKGp-AgIhQDmr2UaE6-_zGqgg&usqp=CAU'/>
-          </Wrap>
-          <Wrap>
-            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3CMANXeq03jKGp-AgIhQDmr2UaE6-_zGqgg&usqp=CAU'/>
-          </Wrap>
+          ))}
         </Content>
     </Container>
   )
@@ -38,6 +48,8 @@ const Wrap = styled.div`
   border-radius:10px;
   cursor:pointer;
   overflow:hidden;
+  height: 150px;
+  object-fit: contain;
   border: 3px solid rgba(249, 249, 249,0.1);  
   box-shadow:rgb(0 0 0 / 69%) 0px 26px 30px -10px,
   rgb(0 0 0 / 73%) 0px 16px 10px -10px;
